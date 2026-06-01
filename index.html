@@ -4,12 +4,24 @@
 <title>ぼくの野球ゲーム</title>
 </head>
 
+  
 <body>
 
 <h1>⚾ぼくの野球ゲーム⚾</h1>
 
 <p id="score">
 得点：0
+
+
+<p id="bases">
+⚪
+⬜　⬜
+　⬜
+</p>
+
+
+
+  
 </p>
   
 <button onclick="swing()">
@@ -26,6 +38,25 @@
 
 let score = 0;
 
+
+let runner1 = false;
+let runner2 = false;
+let runner3 = false;
+
+
+function showBases() {
+
+  let first = runner1 ? "🟢" : "⚪";
+  let second = runner2 ? "🟢" : "⚪";
+  let third = runner3 ? "🟢" : "⚪";
+
+  document.getElementById("bases").innerHTML =
+    "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
+    third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
+    "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
+}
+
+  
 function swing() {
 
   let number = Math.random();
@@ -67,17 +98,8 @@ if(number < 0.3){
 
 
 
-function showBases() {
 
-  let first = runner1 ? "🟢" : "⚪";
-  let second = runner2 ? "🟢" : "⚪";
-  let third = runner3 ? "🟢" : "⚪";
 
-  document.getElementById("bases").innerHTML =
-    "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
-    third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
-    "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
-}
 
 
 
