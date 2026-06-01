@@ -26,64 +26,96 @@
 
   <script>
 
-    let score = 0;
+<script>
 
-    let runner1 = false;
-    let runner2 = false;
-    let runner3 = false;
+let score = 0;
 
-    function showBases() {
+let runner1 = false;
+let runner2 = false;
+let runner3 = false;
 
-      let first = runner1 ? "🟢" : "⚪";
-      let second = runner2 ? "🟢" : "⚪";
-      let third = runner3 ? "🟢" : "⚪";
+function showBases() {
 
-      document.getElementById("bases").innerHTML =
-        "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
-        third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
-        "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
-    }
+  let first = runner1 ? "🟢" : "⚪";
+  let second = runner2 ? "🟢" : "⚪";
+  let third = runner3 ? "🟢" : "⚪";
 
-    function swing() {
+  document.getElementById("bases").innerHTML =
+    "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
+    third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
+    "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
+}
 
-      let number = Math.random();
+function hit() {
 
-      if (number < 0.3) {
+  // 3塁ランナーがいたら得点
+  if (runner3) {
+    score++;
+  }
 
-        score = score + 1;
+  // ランナーを進める
+  runner3 = runner2;
+  runner2 = runner1;
+  runner1 = true;
 
-        document.getElementById("score").innerText =
-          "得点：" + score;
+  document.getElementById("score").innerText =
+    "得点：" + score;
 
-        document.getElementById("result").innerText =
-          "ホームラン！！";
+  showBases();
 
-      }
-      else if (number < 0.7) {
+  document.getElementById("result").innerText =
+    "ヒット！";
+}
 
-        score = score + 1;
+function homerun() {
 
-        document.getElementById("score").innerText =
-          "得点：" + score;
+  let runs = 1; // バッター
 
-        runner1 = true;
-        showBases();
+  if (runner1) runs++;
+  if (runner2) runs++;
+  if (runner3) runs++;
 
-        document.getElementById("result").innerText =
-          "ヒット！";
+  score += runs;
 
-      }
-      else {
+  runner1 = false;
+  runner2 = false;
+  runner3 = false;
 
-        document.getElementById("result").innerText =
-          "空振り！";
+  document.getElementById("score").innerText =
+    "得点：" + score;
 
-      }
+  showBases();
 
-    }
+  document.getElementById("result").innerText =
+    runs + "ランホームラン！！";
+}
 
-    showBases();
+function swing() {
 
+  let number = Math.random();
+
+  if (number < 0.3) {
+
+    homerun();
+
+  }
+  else if (number < 0.7) {
+
+    hit();
+
+  }
+  else {
+
+    document.getElementById("result").innerText =
+      "空振り！";
+
+  }
+
+}
+
+showBases();
+
+</script>
   </script>
 
 </body>
