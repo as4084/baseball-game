@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ぼくの野球ゲーム</title>
+  <title>ぼくの野球ゲーム</title>
 </head>
 
 <body>
 
-<h1>⚾ぼくの野球ゲーム⚾</h1>
+  <h1>⚾ぼくの野球ゲーム⚾</h1>
 
-<p id="score">
-得点：0
-</p>
+  <p id="score">
+    得点：0
+  </p>
 
-<p id="bases">
-読み込み中...
-</p>
+  <p id="bases">
+    読み込み中...
+  </p>
 
-<button onclick="swing()">
-バットをふる！
-</button>
+  <button onclick="swing()">
+    バットをふる！
+  </button>
 
-<p id="result">
-ボタンを押してね！
-</p>
+  <p id="result">
+    ボタンを押してね！
+  </p>
 
-<script>
+  <script>
 
-let score = 0;
+    let score = 0;
 
-let runner1 = false;
-let runner2 = false;
-let runner3 = false;
+    let runner1 = false;
+    let runner2 = false;
+    let runner3 = false;
 
-function showBases() {
+    function showBases() {
 
-  let first = runner1 ? "🟢" : "⚪";
-  let second = runner2 ? "🟢" : "⚪";
-  let third = runner3 ? "🟢" : "⚪";
+      let first = runner1 ? "🟢" : "⚪";
+      let second = runner2 ? "🟢" : "⚪";
+      let third = runner3 ? "🟢" : "⚪";
 
-  document.getElementById("bases").innerHTML =
-    "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
-    third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
-    "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
-}
+      document.getElementById("bases").innerHTML =
+        "&nbsp;&nbsp;&nbsp;&nbsp;" + second + "<br>" +
+        third + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + first + "<br>" +
+        "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
+    }
 
-function swing() {
+    function swing() {
 
-  let number = Math.random();
+      let number = Math.random();
 
-  if(number < 0.3){
+      if (number < 0.3) {
 
-    score = score + 1;
+        score = score + 1;
 
-    document.getElementById("score").innerText =
-      "得点：" + score;
+        document.getElementById("score").innerText =
+          "得点：" + score;
 
-    document.getElementById("result").innerText =
-      "ホームラン！！";
+        document.getElementById("result").innerText =
+          "ホームラン！！";
 
-  }
-  else if(number < 0.7){
+      }
+      else if (number < 0.7) {
 
-    score = score + 1;
+        score = score + 1;
 
-    document.getElementById("score").innerText =
-      "得点：" + score;
+        document.getElementById("score").innerText =
+          "得点：" + score;
 
-    runner1 = true;
+        runner1 = true;
+        showBases();
+
+        document.getElementById("result").innerText =
+          "ヒット！";
+
+      }
+      else {
+
+        document.getElementById("result").innerText =
+          "空振り！";
+
+      }
+
+    }
+
     showBases();
 
-    document.getElementById("result").innerText =
-      "ヒット！";
-
-  }
-  else{
-
-    document.getElementById("result").innerText =
-      "空振り！";
-
-  }
-
-}
-
-showBases();
-
-</script>
+  </script>
 
 </body>
 </html>
