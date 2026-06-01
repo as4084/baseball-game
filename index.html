@@ -4,30 +4,20 @@
 <title>ぼくの野球ゲーム</title>
 </head>
 
-  
 <body>
 
 <h1>⚾ぼくの野球ゲーム⚾</h1>
 
 <p id="score">
 得点：0
-
+</p>
 
 <p id="bases">
-⚪
-⬜　⬜
-　⬜
+読み込み中...
 </p>
 
-
-
-  
-</p>
-  
 <button onclick="swing()">
-
 バットをふる！
-  
 </button>
 
 <p id="result">
@@ -38,11 +28,9 @@
 
 let score = 0;
 
-
 let runner1 = false;
 let runner2 = false;
 let runner3 = false;
-
 
 function showBases() {
 
@@ -56,57 +44,47 @@ function showBases() {
     "&nbsp;&nbsp;&nbsp;&nbsp;🏠";
 }
 
-  
 function swing() {
 
   let number = Math.random();
 
-if(number < 0.3){
+  if(number < 0.3){
 
-  score = score + 1;
+    score = score + 1;
 
-  document.getElementById("score").innerText =
-    "得点：" + score;
+    document.getElementById("score").innerText =
+      "得点：" + score;
 
-  document.getElementById("result").innerText =
-    "ホームラン！！";
-}
+    document.getElementById("result").innerText =
+      "ホームラン！！";
 
+  }
   else if(number < 0.7){
 
-  score = score + 1;
+    score = score + 1;
 
-  document.getElementById("score").innerText =
-    "得点：" + score;
+    document.getElementById("score").innerText =
+      "得点：" + score;
 
-  document.getElementById("result").innerText =
-    "ヒット！";
-}
+    runner1 = true;
+    showBases();
 
+    document.getElementById("result").innerText =
+      "ヒット！";
+
+  }
   else{
+
     document.getElementById("result").innerText =
       "空振り！";
+
   }
 
 }
+
+showBases();
 
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
