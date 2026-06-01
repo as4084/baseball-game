@@ -8,8 +8,14 @@
 
 <h1>⚾ぼくの野球ゲーム⚾</h1>
 
+<p id="score">
+得点：0
+</p>
+  
 <button onclick="swing()">
+
 バットをふる！
+  
 </button>
 
 <p id="result">
@@ -18,19 +24,33 @@
 
 <script>
 
+let score = 0;
+
 function swing() {
 
   let number = Math.random();
 
-  if(number < 0.3){
-    document.getElementById("result").innerText =
-      "ホームラン！！";
-  }
+if(number < 0.3){
+
+  score = score + 1;
+
+  document.getElementById("score").innerText =
+    "得点：" + score;
+
+  document.getElementById("result").innerText =
+    "ホームラン！！";
+}
 
   else if(number < 0.7){
-    document.getElementById("result").innerText =
-      "ヒット！";
-  }
+
+  score = score + 1;
+
+  document.getElementById("score").innerText =
+    "得点：" + score;
+
+  document.getElementById("result").innerText =
+    "ヒット！";
+}
 
   else{
     document.getElementById("result").innerText =
